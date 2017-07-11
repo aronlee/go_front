@@ -1,0 +1,66 @@
+{
+  "name": "go_front",
+  "description": "A Vue.js project",
+  "author": "312601152@qq.com",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --env.dev",
+    "build": "rimraf dist && webpack -p --progress --hide-modules"
+  },
+  "dependencies": {
+    "element-ui": "^1.1.2",
+    "iview": "^2.0.0-rc.18",
+    "jquery": "^3.2.1",
+    "underscore": "^1.8.3",
+    "vue": "^2.1.8",
+    "vue-resource": "^1.3.4",
+    "vue-router": "^2.7.0",
+    "wangeditor": "^3.0.3",
+    "xss": "^0.3.3"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-component": "^0.9.1",
+    "babel-preset-vue-app": "^1.2.0",
+    "css-loader": "^0.27.3",
+    "enhanced-resolve": "^3.3.0",
+    "eslint": "^4.1.1",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-vue": "^2.1.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.24.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^1.3.3",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^6.0.6",
+    "source-list-map": "^2.0.0",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.8",
+    "vue-loader": "^11.3.4",
+    "vue-template-compiler": "^2.1.8",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1",
+    "webpack-sources": "^1.0.1"
+  },
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aronlee/go_front.git"
+  },
+  "keywords": [
+    "vue",
+    "go"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aronlee/go_front/issues"
+  },
+  "homepage": "https://github.com/aronlee/go_front#readme"
+}
