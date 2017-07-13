@@ -1,70 +1,63 @@
 <template>
   <div>
-    <Table height="200" :columns="columns1" :data="data2"></Table>
+    <Table :columns="columns" :data="articleList"></Table>
+    <div class="page-wrap">
+      <Page 
+        class="page" 
+        :current="current" 
+        :total="total" 
+        :page-size="pageSize" 
+        show-total 
+        show-elevator 
+        show-sizer 
+        :page-size-opts="[5, 10, 20, 30, 40, 100]"
+        @on-change="handlePageChange" 
+        @on-page-size-change="handlePageSizeChange"
+      ></Page>
+    </div>
   </div>
 </template>
 
 <script>
+import columns from "./column"
 export default {
   name: "list-article",
   data () {
     return {
-      columns1: [
-        {
-          title: "姓名",
-          key: "name"
-        },
-        {
-          title: "年龄",
-          key: "age"
-        },
-        {
-          title: "地址",
-          key: "address"
+      columns,
+      articleList: [],
+      current: 1,
+      pageSize: 5,
+      total: 0
+    }
+  },
+  mounted () {
+    this.getArticles(this.current, this.pageSize)
+  },
+  methods: {
+    getArticles (pageNo, pageSize) {
+      this.$http.get("/api/admin/articleList", {
+        params: {
+          pageNo,
+          pageSize
         }
-      ],
-      data2: [
-        {
-          name: "王小明",
-          age: 18,
-          address: "北京市朝阳区芍药居"
-        },
-        {
-          name: "张小刚",
-          age: 25,
-          address: "北京市海淀区西二旗"
-        },
-        {
-          name: "李小红",
-          age: 30,
-          address: "上海市浦东新区世纪大道"
-        },
-        {
-          name: "周小伟",
-          age: 26,
-          address: "深圳市南山区深南大道"
-        },
-        {
-          name: "王小明",
-          age: 18,
-          address: "北京市朝阳区芍药居"
-        },
-        {
-          name: "张小刚",
-          age: 25,
-          address: "北京市海淀区西二旗"
-        },
-        {
-          name: "李小红",
-          age: 30,
-          address: "上海市浦东新区世纪大道"
-        },
-        {
-          name: "周小伟",
-          age: 26,
-          address: "深圳市南山区深南大道"
+      }).then(res => {
+        const { data, code } = res.body
+        if (code !== 1) return
+        this.articleList = data.List
+        this.total = data.TotalCount
+      }).catch(err => {
+        if (err) {
+          this.$Message.error("查询失败")
         }
-      ]
+      })
+    },
+    handlePageSizeChange (pageSize) {
+      this.pageSize = pageSize
+      this.getArticles(this.current, pageSize)
+    },
+    handlePageChange (pageNo) {
+      this.getArticles(pageNo, this.pageSize)
     }
   }
 }

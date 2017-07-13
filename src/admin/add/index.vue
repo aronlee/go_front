@@ -126,10 +126,11 @@ export default {
         css: "",
         tags: tagIds
       }).then(res => {
-        const { data, code } = res.body
+        const { code } = res.body
         if (code === 1) {
-          this.tagList = data.List
-          this.total = data.TotalCount
+          this.$Message.success("发布成功")
+        } else {
+          this.$Message.error("发布失败")
         }
       })
     },
