@@ -26,8 +26,8 @@
     </div>
     <div class="wrapper-container">
       <div class="article">
-        <div class="art-item">
-          <p class="title">angularJS指令</p>
+        <div class="art-item" v-for="(article, index) in articles" :key="index">
+          <p class="title">{{article.title}}</p>
           <Row class="ft">
             <i-col span="18" class="tags-wrap">
               <Tag>angularjs</Tag>
@@ -36,9 +36,9 @@
               <Tag>html</Tag>
             </i-col>
             <i-col span="6" class="ft-r">
-              <span>aron lee</span>
+              <span>{{article.username}}</span>
               发布于
-              <span>2017年07月08日</span>
+              <span>{{article.update_time}}</span>
             </i-col>
           </Row>
         </div>
@@ -70,7 +70,11 @@ export default {
   name: "home",
   data () {
     return {
-      theme1: "light"
+      theme1: "light",
+      articles: [],
+      total: 0,
+      current: 1,
+      pageSize: 10
     }
   },
   components: {
@@ -84,6 +88,29 @@ export default {
     Tag,
     Row,
     ICol
+  },
+  mounted() {
+    this.getArticleList(1, 10)
+  },
+  methods: {
+    getArticleList(pageNo, pageSize) {
+      this.$http.get("/api/home/articleList", {
+        params: {
+          pageNo,
+          pageSize
+        }
+      }).then(res => {
+        const { code, data } = res.body
+        if (code === 1) {
+          this.articles = data.List
+          this.total = data.TotalCount
+        } else {
+          this.$Message.error("查询文章失败")
+        }
+      }).catch(err => {
+        if (err) this.$Message.error("查询文章失败")
+      })
+    }
   }
 }
 </script>
@@ -94,7 +121,6 @@ export default {
     background: #2d8cf0;
     .nav{
       width: $container;
-      // height: 80px;
       margin-right: auto;
       margin-left: auto;
       &:after{
@@ -121,8 +147,10 @@ export default {
     min-height: 200px;
     margin: 30px auto 20px;
     overflow: hidden;
-    background: #fff;
     border-radius: 4px;
+  }
+  .article{
+    background: #fff;
   }
   .footer{
     background-color: #fff;
