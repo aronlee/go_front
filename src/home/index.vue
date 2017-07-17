@@ -19,30 +19,119 @@
               首页
           </iv-menu-item>
           <iv-menu-item name="2">
-              blog
+            <Icon type="social-javascript"></Icon>
+              技术
+          </iv-menu-item>
+          <iv-menu-item name="3">
+            <Icon type="compose"></Icon>
+              笔记
+          </iv-menu-item>
+          <iv-menu-item name="4">
+            <Icon type="ios-calendar"></Icon>
+              归档
+          </iv-menu-item>
+          <iv-menu-item name="5">
+            <Icon type="social-rss"></Icon>
+              订阅
           </iv-menu-item>
         </iv-menu>
       </div>
     </div>
     <div class="wrapper-container">
-      <div class="article">
-        <div class="art-item" v-for="(article, index) in articles" :key="index">
-          <p class="title">{{article.title}}</p>
-          <Row class="ft">
-            <i-col span="18" class="tags-wrap">
+      <Row class="home-content" :gutter="32">
+        <i-col span="16">
+          <div class="article">
+            <div class="art-item" v-for="(article, index) in articles" :key="index">
+              <p class="title">{{article.title}}</p>
+              <Row class="ft">
+                <i-col span="18" class="tags-wrap">
+                  <Tag v-for="(tag, index) in article.tags" :key="index">{{tag.name}}</Tag>
+                </i-col>
+                <i-col span="6" class="ft-r">
+                  <span>{{article.username}}</span>
+                  发布于
+                  <span>{{article.update_time}}</span>
+                </i-col>
+              </Row>
+            </div>
+          </div>
+          <div class="pagination-wrap">
+            <Page 
+              class="page" 
+              :current="current" 
+              :total="total" 
+              :page-size="pageSize" 
+              show-total 
+              show-elevator 
+              show-sizer 
+              :page-size-opts="[5, 10, 20, 30, 40, 100]"
+              @on-change="handlePageChange" 
+              @on-page-size-change="handlePageSizeChange"
+            ></Page>
+          </div>
+        </i-col>
+        <i-col span="8">
+          <div class="right">
+            <Card class="article-card article-classification" shadow>
+              <p slot="title">
+                <Icon type="document-text"></Icon>
+                分类
+              </p>
+              <div class="item">
+                <a href="">数据库（6）</a>
+              </div>
+              <div class="item">
+                <a href="">前端（5）</a>
+              </div>
+              <div class="item">
+                <a href="">构建工具（22）</a>
+              </div>
+              <div class="item">
+                <a href="">数据处理（12）</a>
+              </div>
+              <div class="item">
+                <a href="">深度学习（7）</a>
+              </div>
+            </Card>
+            <Card class="article-card article-tags" shadow>
+              <p slot="title">
+                <Icon type="pricetags"></Icon>
+                标签
+              </p>
+              <Tag>nodejs</Tag>
+              <Tag>java</Tag>
+              <Tag>c++</Tag>
+              <Tag>ruby</Tag>
+              <Tag>mysql</Tag>
               <Tag>angularjs</Tag>
-              <Tag>javascript</Tag>
-              <Tag>css</Tag>
-              <Tag>html</Tag>
-            </i-col>
-            <i-col span="6" class="ft-r">
-              <span>{{article.username}}</span>
-              发布于
-              <span>{{article.update_time}}</span>
-            </i-col>
-          </Row>
-        </div>
-      </div>
+              <Tag>react</Tag>
+              <Tag>c#</Tag>
+            </Card>
+            <Card class="article-card article-archive" shadow>
+              <p slot="title">
+                <Icon type="pricetags"></Icon>
+                文章归档
+              </p>
+              <p>2017年7月</p>
+              <p>2017年6月</p>
+              <p>2017年5月</p>
+              <p>2017年4月</p>
+              <p>2017年3月</p>
+              <p>...</p>
+            </Card>
+            <Card class="article-card about-me" shadow>
+              <p slot="title">
+                <Icon type="pricetags"></Icon>
+                关于博主
+              </p>
+              <p>新浪微博</p>
+              <p>qq</p>
+              <p>微信</p>
+            </Card>
+          </div>
+        </i-col>
+      </Row>
+      
     </div>
     <div class="footer">
       <div class="footer-inner">
@@ -110,6 +199,13 @@ export default {
       }).catch(err => {
         if (err) this.$Message.error("查询文章失败")
       })
+    },
+    handlePageSizeChange (pageSize) {
+      this.pageSize = pageSize
+      this.getArticleList(this.current, pageSize)
+    },
+    handlePageChange (pageNo) {
+      this.getArticleList(pageNo, this.pageSize)
     }
   }
 }
@@ -179,5 +275,21 @@ export default {
       line-height: 30px;
     }
     border-bottom: 1px solid #eee;
+  }
+  .pagination-wrap{
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .home-content{
+    // .right{
+    //   background-color: #fff;
+    //   font-size:14px;
+    // }
+    // .newest-article{
+    //   padding:16px;
+    // }
+    .article-card{
+      margin-bottom: 24px;
+    }
   }
 </style>
