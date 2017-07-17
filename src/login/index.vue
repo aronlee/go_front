@@ -1,12 +1,7 @@
 <template>
   <div class="login-bg">
     <div class="login-wrap">
-      <Tabs
-        v-model="activeName"
-        animated
-        type="card"
-        @on-click="handleTabs"
-      >
+      <Tabs v-model="activeName" animated type="card" @on-click="handleTabs">
         <Tab-pane label="登陆" name="1">
           <login></login>
         </Tab-pane>
@@ -28,20 +23,20 @@ export default {
     Login,
     Register
   },
-  data () {
+  data() {
     return {
       activeName: "1"
     }
   },
   methods: {
-    handleTabs (name) {
+    handleTabs(name) {
       // console.log(tab, event);
     }
   }
 }
 </script>
 
-<style lang="sass">
+<style lang="scss">
   .login-wrap {
     width: 500px;
     margin-left: auto;

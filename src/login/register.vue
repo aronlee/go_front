@@ -148,7 +148,7 @@
   }
 </script>
 
-<style scoped lang="sass">
+<style scoped lang="scss">
   .login-btn-wrap{
     text-align: center;
   }

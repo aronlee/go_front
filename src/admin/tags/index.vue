@@ -145,7 +145,7 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
+<style scoped lang="scss">
   .tags-add-wrap{
     text-align: right;
     padding: 16px 0;

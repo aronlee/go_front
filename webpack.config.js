@@ -24,12 +24,14 @@ module.exports = (options = {}) => ({
         exclude: /(node_modules)|plugins/,
         loader: "eslint-loader",
         options: {
+          failOnError: true,
           cache: false,
           formatter: eslintFriendlyFormatter
         }
       },
       {
         test: /\.vue$/,
+        exclude: /node_modules/,
         use: ["vue-loader"]
       },
       {
@@ -38,16 +40,26 @@ module.exports = (options = {}) => ({
       },
       {
         test: /\.js$/,
-        use: ["babel-loader"],
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            cacheDirectory: false
+          }
+        }
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
-      },
-      {
-        test: /\.scss$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
+        use: [
+          "vue-style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true
+            }
+          },
+          "postcss-loader"
+        ]
       },
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,

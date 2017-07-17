@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
+<style scoped lang="scss">
   .page-wrap{
     padding-top: 16px;
     padding-bottom: 16px;

@@ -1,5 +1,18 @@
-/*body{
+body{
   padding: 0;
   margin: 0;
-  background-image: url(./login/imgs/login_bg.jpg);
-}*/
+  font-size: 14px;
+  line-height: 1.5;
+}
+.clearfix:after{
+  content: "";
+  display: block;
+  zoom: 1;
+  clear: both;
+}
+.pull-left{
+  float: left;
+}
+.pull-right{
+  float: right;
+}
