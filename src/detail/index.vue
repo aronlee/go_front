@@ -73,7 +73,7 @@
               </p>
               <p>
                 <span class="comment-child-time">2017.07.18 13:48</span>
-                <span><Icon type="ios-chatbubble-outline"></Icon>回复</span>
+                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
               </p>
             </div>
             <div class="comment-child-item">
@@ -83,7 +83,7 @@
               </p>
               <p>
                 <span class="comment-child-time">2017.07.18 13:48</span>
-                <span><Icon type="ios-chatbubble-outline"></Icon>回复</span>
+                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
               </p>
             </div>
             <div class="comment-child-item">
@@ -93,9 +93,20 @@
               </p>
               <p>
                 <span class="comment-child-time">2017.07.18 13:48</span>
-                <span><Icon type="ios-chatbubble-outline"></Icon>回复</span>
+                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
               </p>
             </div>
+            <div class="comment-child-item">
+              <p>
+                <a class="comment-name2">Graceland</a>： 
+                <a class="comment-name3">@诸司马技</a>在旅游的时候戴戴 平时不用戴
+              </p>
+              <p>
+                <span class="comment-child-time">2017.07.18 13:48</span>
+                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
+              </p>
+            </div>
+            <comment-ipt-wrap :show="true"></comment-ipt-wrap>
           </div>
         </div>
       </div>
@@ -108,13 +119,15 @@ import {
   Icon,
   Tag
 } from "iview"
+import CommentIptWrap from "./components/comment-ipt-wrap.vue"
 import moment from "moment"
 
 export default {
   name: "detail",
   components: {
     Icon,
-    Tag
+    Tag,
+    CommentIptWrap
   },
   data() {
     return {
@@ -259,6 +272,12 @@ export default {
     font-size: 12px;
     color: #757575;
     margin-right: 12px;
+  }
+  .comment-child-comment{
+    cursor: pointer;
+    .ivu-icon{
+      margin-right: 4px;
+    }
   }
 }
 </style>
