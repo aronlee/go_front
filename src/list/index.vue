@@ -3,9 +3,7 @@
     <div class="article">
       <div class="art-item" v-for="(article, index) in articles" :key="index">
         <p class="title">
-          <router-link :to="{ name: 'detail', params: { id: article.a_i_d } }">
-            {{article.title}}
-          </router-link>
+          <a :href="`#/detail/${article.a_i_d}`">{{article.title}}</a>
         </p>
         <p class="date">
           <i-icon type="calendar"></i-icon>

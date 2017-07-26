@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="category">
     <div class="article">
       <div class="art-item" v-for="(article, index) in articles" :key="index">
         <p class="title">
@@ -53,7 +53,7 @@ import {
 import moment from "moment"
 
 export default {
-  name: "home",
+  name: "category",
   components: {
     IIcon,
     ITag,
@@ -73,8 +73,10 @@ export default {
   methods: {
     getArticleList(pageNo, pageSize) {
       this.$Loading.start()
+      const { id } = this.$route.params
       this.$http.get("/api/home/articleList", {
         params: {
+          categoryId: id,
           pageNo,
           pageSize
         }

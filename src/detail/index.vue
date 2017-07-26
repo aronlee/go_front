@@ -4,22 +4,22 @@
     <p>{{formatDate(detail.create_time)}}</p>
     <div class="title-bot">
       <div>
-        <Tag v-for="(tag, index) in detail.tags" :key="index">
-          <Icon type="pricetag"></Icon>
+        <i-tag v-for="(tag, index) in detail.tags" :key="index">
+          <i-icon type="pricetag"></i-icon>
           {{tag.name}}
-        </Tag>
+        </i-tag>
       </div>
       <div class="nums-wrap">
         <div class="nums-item">
-          <Icon type="eye"></Icon>
+          <i-icon type="eye"></i-icon>
           {{detail.view_num}}
         </div>
         <div class="nums-item">
-          <Icon type="chatbubble-working"></Icon>
+          <i-icon type="chatbubble-working"></i-icon>
           {{detail.comment_num}}
         </div>
         <div class="nums-item">
-          <Icon type="thumbsup"></Icon>
+          <i-icon type="thumbsup"></i-icon>
           {{detail.like_num}}
         </div>
       </div>
@@ -46,69 +46,7 @@
         <Tab-pane :label="`评论(${detail.comment_num})`" name="name1"></Tab-pane>
       </Tabs>
       <div class="comment-list">
-        <div class="comment-item">
-          <div class="clearfix comment-header">
-            <div class="pull-left left">
-              <img class="photo" src="../assets/default-photo.png" alt="">
-            </div>
-            <div class="pull-left right">
-              <p class="comment-name1">诸司马技</p>
-              <p class="comment-name1-bot">2楼 · 2017.07.18 13:32</p>
-            </div>
-          </div>
-          <div class="comment-des">随便什么防狼产品，也顶不过一张艾滋病检验单。</div>
-          <div class="comment-bot">
-            <div class="comment-bot-item">
-              <Icon type="thumbsup"></Icon>11人赞
-            </div>
-            <div class="comment-bot-item">
-              <Icon type="ios-chatbubble-outline"></Icon>回复
-            </div>
-          </div>
-          <div class="comment-children">
-            <div class="comment-child-item">
-              <p>
-                <a class="comment-name2">Graceland</a>： 
-                <a class="comment-name3">@诸司马技</a>在旅游的时候戴戴 平时不用戴
-              </p>
-              <p>
-                <span class="comment-child-time">2017.07.18 13:48</span>
-                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
-              </p>
-            </div>
-            <div class="comment-child-item">
-              <p>
-                <a class="comment-name2">Graceland</a>： 
-                <a class="comment-name3">@诸司马技</a>在旅游的时候戴戴 平时不用戴
-              </p>
-              <p>
-                <span class="comment-child-time">2017.07.18 13:48</span>
-                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
-              </p>
-            </div>
-            <div class="comment-child-item">
-              <p>
-                <a class="comment-name2">Graceland</a>： 
-                <a class="comment-name3">@诸司马技</a>在旅游的时候戴戴 平时不用戴
-              </p>
-              <p>
-                <span class="comment-child-time">2017.07.18 13:48</span>
-                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
-              </p>
-            </div>
-            <div class="comment-child-item">
-              <p>
-                <a class="comment-name2">Graceland</a>： 
-                <a class="comment-name3">@诸司马技</a>在旅游的时候戴戴 平时不用戴
-              </p>
-              <p>
-                <span class="comment-child-time">2017.07.18 13:48</span>
-                <span class="comment-child-comment"><Icon type="ios-chatbubble-outline"></Icon>回复</span>
-              </p>
-            </div>
-            <comment-ipt-wrap :show="true"></comment-ipt-wrap>
-          </div>
-        </div>
+        <comment-item v-for="(item, index) in comments" :key="index" :comment="item"></comment-item>
       </div>
     </div>
   </div>
@@ -116,22 +54,104 @@
 
 <script>
 import {
-  Icon,
-  Tag
+  Icon as IIcon,
+  Tag as ITag
 } from "iview"
-import CommentIptWrap from "./components/comment-ipt-wrap.vue"
 import moment from "moment"
+import CommentItem from "./components/comment-item.vue"
 
 export default {
   name: "detail",
   components: {
-    Icon,
-    Tag,
-    CommentIptWrap
+    IIcon,
+    ITag,
+    CommentItem
   },
   data() {
     return {
-      detail: {}
+      detail: {},
+      comments: [
+        {
+          name: "诸司马技",
+          content: "随便什么防狼产品，也顶不过一张艾滋病检验单。",
+          createTime: "2017-07-14 03:32:25",
+          floor: 1,
+          likeNum: 11,
+          children: [
+            {
+              name: "Graceland",
+              content: "<a href=''>@诸司马技</a>在旅游的时候戴戴平时不用戴",
+              createTime: "2017-07-14 03:17:27"
+            },
+            {
+              name: "Mike",
+              content: "<a href=''>@诸司马技</a>测试一下",
+              createTime: "2017-07-14 03:17:27"
+            },
+            {
+              name: "Maria",
+              content: "<a href=''>@Mike</a>在这里你测试啥？",
+              createTime: "2017-07-14 03:17:27"
+            },
+            {
+              name: "Graceland",
+              content: "<a href=''>@Maria</a>我测试下评论啊",
+              createTime: "2017-07-14 03:17:27"
+            }
+          ]
+        },
+        {
+          name: "三云",
+          content: "字写的不错，就是差了点力道",
+          createTime: "2017-07-14 03:32:25",
+          floor: 2,
+          likeNum: 4,
+          children: [
+            {
+              name: "三鹿不加糖",
+              content: "<a href=''>@三云</a>确实啊",
+              createTime: "2017-07-14 03:17:27"
+            },
+            {
+              name: "领贤商业设计",
+              content: "<a href=''>@三鹿不加糖</a>每次买糯米家的都退了,图片好看,实物......无法描述",
+              createTime: "2017-07-14 03:17:27"
+            },
+            {
+              name: "A浪里白条一字帅",
+              content: "<a href=''>@三云</a>彼得潘大叔的裙子不只这个价格吧",
+              createTime: "2017-07-14 03:17:27"
+            },
+            {
+              name: "乔治妹妹",
+              content: "<a href=''>@三云</a>糯米家的也就那样吧，今年入了两件短袖，有一件洗一水烂了个洞",
+              createTime: "2017-07-14 03:17:27"
+            }
+          ]
+        },
+        {
+          name: "方方芳芳",
+          content: "语气模仿得好像得呀😄",
+          createTime: "2017-07-14 03:32:25",
+          floor: 3,
+          likeNum: 6,
+          children: [
+            {
+              name: "江昭和",
+              content: "<a href=''>@方方芳芳</a>谢谢了呀。",
+              createTime: "2017-07-14 03:17:27"
+            }
+          ]
+        },
+        {
+          name: "逗小北",
+          content: "写得真好。",
+          createTime: "2017.07.18 13:32",
+          floor: 4,
+          likeNum: 22,
+          children: []
+        }
+      ]
     }
   },
   created() {
@@ -140,15 +160,19 @@ export default {
   methods: {
     queryDetail() {
       const { id } = this.$route.params
+      this.$Loading.start()
       this.$http.get("/api/home/articleDetail", {
         params: {
           id
         }
       }).then(res => {
+        this.$Loading.finish()
         const { code, data } = res.body
         if (code === 1) {
           this.detail = data
         }
+      }).catch(() => {
+        this.$Loading.error()
       })
     },
     formatDate(date) {
@@ -212,72 +236,51 @@ export default {
     text-align: right;
   }
 }
-.comment-header{
-  .photo{
+
+.comment-header {
+  .photo {
     width: 48px;
     height: 48px;
   }
-  .right{
+  .right {
     margin-left: 16px;
   }
 }
-.comment{
-  .comment-item{
+
+.comment {
+  .comment-item {
     padding-bottom: 24px;
     margin-bottom: 24px;
     border-bottom: 1px dotted #f1f1f1;
   }
-  .comment-des{
+  .comment-des {
     font-size: 14px;
     padding-top: 16px;
     padding-bottom: 16px;
   }
-  .comment-bot{
+  .comment-bot {
     margin-bottom: 16px;
   }
-  .comment-children{
+  .comment-children {
     border-left: 2px solid #e1e1e1;
     padding-left: 24px;
   }
-  .comment-child-item{
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-  .comment-bot-item{
+  .comment-bot-item {
     display: inline-block;
     margin-right: 8px;
     cursor: pointer;
-    .ivu-icon{
+    .ivu-icon {
       margin-right: 4px;
     }
   }
-  .comment-name1{
+  .comment-name1 {
     font-size: 16px;
     margin-bottom: 4px;
     color: #212121;
   }
-  .comment-name1-bot{
+  .comment-name1-bot {
     font-size: 12px;
     color: #757575;
-  }
-  .comment-name2{
-    // color: blue;
-  }
-  .comment-name3{
-    // color: blue;
-    
-    margin-right: 4px;
-  }
-  .comment-child-time{
-    font-size: 12px;
-    color: #757575;
-    margin-right: 12px;
-  }
-  .comment-child-comment{
-    cursor: pointer;
-    .ivu-icon{
-      margin-right: 4px;
-    }
   }
 }
 </style>

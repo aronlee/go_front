@@ -9,10 +9,11 @@ import Tags from "./admin/tags/index.vue"
 
 import Main from "./main/index.vue"
 import Home from "./home/index.vue"
-import Technology from "./technology/index.vue"
 import Detail from "./detail/index.vue"
-import Note from "./note/index.vue"
 import Archive from "./archive/index.vue"
+import RSS from "./rss/index.vue"
+// import List from "./list/index.vue"
+import Category from "./category/index.vue"
 
 const routes = [
   {
@@ -25,23 +26,28 @@ const routes = [
     children: [
       { // 首页
         path: "",
+        name: "home",
         component: Home
+      },
+      {
+        path: "category/:id",
+        name: "category",
+        component: Category
+      },
+      { // 归档
+        path: "archive/:date?",
+        name: "archive",
+        component: Archive
+      },
+      { // rss订阅
+        path: "rss",
+        name: "rss",
+        component: RSS
       },
       { // 详情页
         path: "detail/:id",
+        name: "detail",
         component: Detail
-      },
-      { // 技术类
-        path: "technology",
-        component: Technology
-      },
-      { // 笔记类
-        path: "note",
-        component: Note
-      },
-      { // 归档
-        path: "archive",
-        component: Archive
       }
     ]
   },

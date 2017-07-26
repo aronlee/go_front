@@ -1,15 +1,13 @@
 <template>
-  <div class="note">note</div>
+  <div class="rss">rss</div>
 </template>
 
 <script>
 export default {
-  name: "note"
+  name: "rss"
 }
 </script>
 
 <style scoped lang="scss">
-  .note {
-    
-  }
+  
 </style>

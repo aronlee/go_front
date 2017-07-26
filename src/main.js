@@ -11,7 +11,17 @@ Vue.use(IView)
 Vue.use(VueResource)
 
 const router = new VueRouter({
+  mode: "history",
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  IView.LoadingBar.start()
+  next()
+})
+
+router.afterEach((to, from, next) => {
+  IView.LoadingBar.finish()
 })
 
 new Vue({
