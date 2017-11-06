@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="list">
     <div class="article">
       <div class="art-item" v-for="(article, index) in articles" :key="index">
         <p class="title">

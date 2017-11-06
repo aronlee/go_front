@@ -88,6 +88,7 @@ module.exports = (options = {}) => ({
     alias: {
       "~": resolve(__dirname, "src"),
       "vue": "vue/dist/vue.js",
+      "$": "jquery"
       // "ueditor": resolve(__dirname, "plugins/ueditor")
     }
   },

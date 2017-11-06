@@ -1,0 +1,237 @@
+{
+  "code": 200,
+  "data": [
+    {
+      "_id": "59685d01bd70ac7622d5dc14",
+      "name": "as",
+      "description": "12",
+      "id": "mZhu0f",
+      "createUser": "aaa",
+      "createTime": 1500011777373,
+      "updateTime": 1500011777373,
+      "joined": true
+    },
+    {
+      "_id": "59685cc9bd70ac7622d5dc12",
+      "name": "qwer",
+      "description": "1278",
+      "id": "y7gJo0",
+      "createUser": "huazi",
+      "createTime": 1500011721376,
+      "updateTime": 1500011721376,
+      "joined": true
+    },
+    {
+      "_id": "59685603a79e5274183685d0",
+      "name": "dsafaf",
+      "description": "123",
+      "id": "ZkHhWx",
+      "createUser": "huazi",
+      "createTime": 1500009987398,
+      "updateTime": 1500009987398,
+      "joined": true
+    },
+    {
+      "_id": "5968534b8720766c1648314e",
+      "name": "aaa",
+      "description": "123ddddd",
+      "id": "tmLnXW",
+      "createUser": "huazi",
+      "createTime": 1500009291338,
+      "updateTime": 1500009291338,
+      "joined": true
+    },
+    {
+      "_id": "59683d678720766c1648314d",
+      "name": "huazi",
+      "description": "test##\n",
+      "id": "5lanLO",
+      "createUser": "huazi",
+      "createTime": 1500003687411,
+      "updateTime": 1500003687411,
+      "joined": true
+    },
+    {
+      "_id": "58a298dc41c809e45feaacdd",
+      "id": "DiwpOW",
+      "name": "经纪人APP",
+      "createUser": "lancui",
+      "description": "经纪人APP",
+      "createTime": 1487050972167,
+      "updateTime": 1487051086982,
+      "joined": true
+    },
+    {
+      "_id": "5812b463cdccdc9c55ab06ad",
+      "id": "O3MOHv",
+      "name": "dddte",
+      "createUser": "aaaa",
+      "description": "sdfsd",
+      "createTime": 1477620835253,
+      "updateTime": 1477620835253,
+      "joined": true
+    },
+    {
+      "_id": "584a62b6dc550df8423b6a4c",
+      "id": "p9bvOl",
+      "name": "金融组",
+      "createUser": "zhangjun",
+      "description": null,
+      "createTime": 1481269942027,
+      "updateTime": 1481270052707
+    },
+    {
+      "_id": "59685d20b5e20376cf7bf284",
+      "name": "bb",
+      "description": "ddd",
+      "id": "IzeX9u",
+      "createUser": "aaa",
+      "createTime": 1500011808250,
+      "updateTime": 1500011808250
+    },
+    {
+      "_id": "5786148d2e2cd9fd249b63ff",
+      "id": "T9NEK0",
+      "name": "房源宝企业号",
+      "createUser": "lancui",
+      "description": "房源宝企业号",
+      "createTime": 1468404877083,
+      "updateTime": 1468404877083
+    },
+    {
+      "_id": "578610b0060f8a0b258863f0",
+      "id": "DRbtjA",
+      "name": "微信企业号",
+      "createUser": "lancui",
+      "description": "微信企业号",
+      "createTime": 1468403888881,
+      "updateTime": 1468403888881
+    },
+    {
+      "_id": "5968573bf102ca74910d1f66",
+      "name": "asdaf",
+      "description": "sdfafd",
+      "id": "dnhlfA",
+      "createUser": "huazi",
+      "createTime": 1500010299807,
+      "updateTime": 1500010299807
+    },
+    {
+      "_id": "57ec758acdccdc9c55ab05f1",
+      "id": "MyA02e",
+      "name": "FBH微信企业号项目",
+      "createUser": "huhengchao",
+      "description": "FBH微信企业号",
+      "createTime": 1475114378676,
+      "updateTime": 1475114378676
+    },
+    {
+      "_id": "596857e320313174d955111c",
+      "name": "asdaf3333",
+      "description": "sdfafd22222",
+      "id": "fkYbqF",
+      "createUser": "huazi",
+      "createTime": 1500010467108,
+      "updateTime": 1500010467108
+    },
+    {
+      "_id": "5821e6bf91f0a9a555e08d5a",
+      "id": "dtgA9S",
+      "name": "madaha的团队",
+      "createUser": "madaha",
+      "description": null,
+      "createTime": 1478616767572,
+      "updateTime": 1478616767572
+    },
+    {
+      "_id": "579ac817f7a34a3252e7a529",
+      "id": "b6q5ls",
+      "name": "M站",
+      "createUser": "guwenmei",
+      "description": null,
+      "createTime": 1469761559017,
+      "updateTime": 1469761559017
+    },
+    {
+      "_id": "578612722e2cd9fd249b63ef",
+      "id": "nfw9IN",
+      "name": "爱理财服务号",
+      "createUser": "ypli",
+      "description": null,
+      "createTime": 1468404338159,
+      "updateTime": 1468404338159
+    },
+    {
+      "_id": "578612b82e2cd9fd249b63f2",
+      "id": "JRhRw8",
+      "name": "爱屋服务号",
+      "createUser": "ypli",
+      "description": null,
+      "createTime": 1468404408569,
+      "updateTime": 1468404408569
+    },
+    {
+      "_id": "59685c67bd70ac7622d5dc11",
+      "name": "qwer",
+      "description": "1278",
+      "id": "2fqAmc",
+      "createUser": "huazi",
+      "createTime": 1500011623702,
+      "updateTime": 1500011623703
+    },
+    {
+      "_id": "596859d10ade2d758229f74e",
+      "name": "22322",
+      "description": "dsafafs",
+      "id": "yKjnsT",
+      "createUser": "huazi",
+      "createTime": 1500010961287,
+      "updateTime": 1500010961287
+    },
+    {
+      "_id": "58feb545ca35cc9b2467a06e",
+      "id": "6vcex3",
+      "name": "房源宝PC",
+      "createUser": "wanghaizhi",
+      "description": "fyb365.com",
+      "createTime": 1493087557735,
+      "updateTime": 1493087557735
+    },
+    {
+      "_id": "578611da060f8a0b258863f4",
+      "id": "jxtB2d",
+      "name": "用户PC",
+      "createUser": "ypli",
+      "description": null,
+      "createTime": 1468404186078,
+      "updateTime": 1468404186078
+    },
+    {
+      "_id": "57ea4152cdccdc9c55ab05e0",
+      "id": "5ZI0Sh",
+      "name": "房伯虎PC",
+      "createUser": "lancui",
+      "description": "房伯虎PC",
+      "createTime": 1474969938777,
+      "updateTime": 1474969938777
+    },
+    {
+      "_id": "578de272f7a34a3252e7a499",
+      "id": "MdoXhb",
+      "name": "pmo",
+      "createUser": "pmo",
+      "description": null,
+      "createTime": 1468916338235,
+      "updateTime": 1468916338235
+    },
+    {
+      "_id": "578eee5002b41c2652af34c5",
+      "id": "atopb1",
+      "name": "uum",
+      "createUser": "liukun",
+      "description": null,
+      "createTime": 1468984912302,
+      "updateTime": 1468984912302
+    }
+  ]
+}

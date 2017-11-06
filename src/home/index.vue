@@ -1,42 +1,47 @@
 <template>
   <div class="home">
     <div class="article">
-      <div class="art-item" v-for="(article, index) in articles" :key="index">
-        <p class="title">
-          <router-link :to="{ name: 'detail', params: { id: article.a_i_d } }">
-            {{article.title}}
-          </router-link>
-        </p>
-        <p class="date">
-          <i-icon type="calendar"></i-icon>
-          {{formatDate(article.update_time)}}
-        </p>
-        <p class="summary" v-html="article.content"></p>
-        <i-row class="ft">
-          <i-col span="18" class="tags-wrap">
-            <i-tag v-for="(tag, index) in article.tags" :key="index">
-              <i-icon type="pricetag"></i-icon>
-              {{tag.name}}
-            </i-tag>
-          </i-col>
-          <i-col span="6" class="ft-r">
-            <div class="nums-wrap">
-              <div class="nums-item">
-                <i-icon type="eye"></i-icon>
-                {{112}}
+      <transition-group
+        name="art-item"
+        tag="div"
+      >
+        <div class="art-item" v-for="article in articles" :key="article.a_i_d" :data-index="index">
+          <p class="title">
+            <router-link :to="{ name: 'detail', params: { id: article.a_i_d } }">
+              {{article.title}}
+            </router-link>
+          </p>
+          <p class="date">
+            <i-icon type="calendar"></i-icon>
+            {{formatDate(article.update_time)}}
+          </p>
+          <p class="summary" v-html="article.content"></p>
+          <i-row class="ft">
+            <i-col span="18" class="tags-wrap">
+              <i-tag v-for="(tag, index) in article.tags" :key="index">
+                <i-icon type="pricetag"></i-icon>
+                {{tag.name}}
+              </i-tag>
+            </i-col>
+            <i-col span="6" class="ft-r">
+              <div class="nums-wrap">
+                <div class="nums-item">
+                  <i-icon type="eye"></i-icon>
+                  {{112}}
+                </div>
+                <div class="nums-item">
+                  <i-icon type="chatbubble-working"></i-icon>
+                  {{15}}
+                </div>
+                <div class="nums-item">
+                  <i-icon type="thumbsup"></i-icon>
+                  {{112}}
+                </div>
               </div>
-              <div class="nums-item">
-                <i-icon type="chatbubble-working"></i-icon>
-                {{15}}
-              </div>
-              <div class="nums-item">
-                <i-icon type="thumbsup"></i-icon>
-                {{112}}
-              </div>
-            </div>
-          </i-col>
-        </i-row>
-      </div>
+            </i-col>
+          </i-row>
+        </div>
+      </transition-group>
     </div>
     <div class="pagination-wrap">
       <Page class="page" :current="current" :total="total" :page-size="pageSize" show-total show-elevator show-sizer :page-size-opts="[5, 10, 20, 30, 40, 100]" @on-change="handlePageChange" @on-page-size-change="handlePageSizeChange"></Page>
@@ -51,6 +56,7 @@ import {
   Row as IRow
 } from "iview"
 import moment from "moment"
+import Velocity from "velocity-animate"
 
 export default {
   name: "home",
@@ -101,6 +107,35 @@ export default {
     },
     formatDate(date) {
       return moment(date).format("YYYY-MM-DD")
+    },
+    beforeEnter(el) {
+      el.style.opacity = 0
+      el.style.height = 0
+      console.log("beforeEnter")
+    },
+    enter(el, done) {
+      console.log(el.dataset.index)
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1, height: 234 },
+          { complete: done }
+        )
+      }, delay)
+      console.log("enter")
+    },
+    leave(el, done) {
+      console.log(el.dataset.index)
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0, height: 0 },
+          { complete: done }
+        )
+      }, delay)
+      console.log("leave")
     }
   }
 }
@@ -113,6 +148,7 @@ export default {
 
 .art-item {
   padding: 16px;
+  transition: all .8s;
   .title {
     font-size: 20px;
     font-weight: 700;
@@ -133,6 +169,13 @@ export default {
     margin-bottom: 8px;
   }
   border-bottom: 1px solid #eee;
+}
+.art-item-enter, .art-item-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
+}
+.art-item-leave-active {
+  position: absolute;
 }
 
 .pagination-wrap {

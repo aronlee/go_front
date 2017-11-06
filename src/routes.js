@@ -14,8 +14,13 @@ import Archive from "./archive/index.vue"
 import RSS from "./rss/index.vue"
 // import List from "./list/index.vue"
 import Category from "./category/index.vue"
+import Test from "./test/index.vue"
 
 const routes = [
+  {
+    path: "/test",
+    component: Test
+  },
   {
     path: "/login",
     component: Login
